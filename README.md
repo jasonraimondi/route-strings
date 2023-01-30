@@ -33,7 +33,9 @@ console.log(ROUTES.users.list.create());
 // /users
 console.log(ROUTES.users.show.create({ id: 1 }));
 // /users/1
-console.log(ROUTES.users.deeplink.create({ id: 1, something: "magic", here: 2 }));
+console.log(
+  ROUTES.users.deeplink.create({ id: 1, something: "magic", here: 2 }),
+);
 // /users/1/magic/2
 ```
 
