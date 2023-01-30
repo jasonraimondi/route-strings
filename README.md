@@ -11,10 +11,13 @@ A typed route string generator to help keep urls under control.
 
 ```bash
 pnpm add @jmondi/route-strings
-# or
-npm install @jmondi/route-strings
-# or
-yarn add @jmondi/route-strings
+```
+
+### Deno
+
+```ts
+import { route } from "https://deno.land/x/route_strings";
+import { route } from "https://deno.land/x/route_strings@v3.0.0-alpha.1";
 ```
 
 ## Usage
