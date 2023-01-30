@@ -1,5 +1,10 @@
 # @jmondi/route-strings
 
+[![Deno Version](https://shield.deno.dev/x/route_strings?style=flat-square)](https://deno.land/x/route_strings)
+[![Npmjs.org Version](https://img.shields.io/npm/v/@jmondi/route-strings?style=flat-square)](https://www.npmjs.com/package/@jmondi/route-strings)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jasonraimondi/route-strings/test.yml?branch=main&label=Unit%20Tests&style=flat-square)](https://github.com/jasonraimondi/route-strings)
+[![NPM Downloads](https://img.shields.io/npm/dt/@jmondi/route-strings?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/@jmondi/route-strings)
+
 A typed route string generator to help keep urls under control.
 
 ## Install
