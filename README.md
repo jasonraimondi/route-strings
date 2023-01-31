@@ -17,40 +17,29 @@ pnpm add @jmondi/route-strings
 ### Deno
 
 ```ts
-import { route } from "https://deno.land/x/route_strings";
-import { route } from "https://deno.land/x/route_strings@v3.0.0-alpha.1";
+import { route } from "https://deno.land/x/route_strings/mod.ts";
 ```
 
 ## Usage
 
-```typescript
+```ts
 import { Route } from "@jmondi/route-strings";
-
-const ROUTES = {
-  users: {
-    list: new Route("/users"),
-    show: new Route("/users/:id"),
-    deeplink: new Route("/users/:id/:something/:here"),
-  },
-};
-
-console.log(ROUTES.users.list.template);
-// /users
-console.log(ROUTES.users.show.template);
-// /users/:id
-console.log(ROUTES.users.list.create());
-// /users
-console.log(ROUTES.users.show.create({ id: 1 }));
-// /users/1
-console.log(
-  ROUTES.users.deeplink.create({ id: 1, something: "magic", here: 2 }),
-);
-// /users/1/magic/2
+const r = route("/posts/:slug");
+r.template
+// /posts/:slug
 ```
 
-Invalid params passed to create will throw error.
+```ts
+const r = route("/posts/:slug/random/:id");
+r.create({ slug: "hello", id: 5 });
+// /posts/hello/random/5
+```
 
-```typescript
-console.log(ROUTES.users.show.create({ wrong: "this field doesnt exist" }));
-// error missing id
+```ts
+const g = routeGroup({ prefix: "/api/v1" });
+const route = g.add("/posts/:slug/random/:id");
+route.template
+// /api/v1/posts/:slug/random/:id
+route.create({ slug: "hello", id: 5 });
+// /api/v1/posts/hello/random/5
 ```
