@@ -25,7 +25,7 @@ import { route } from "https://deno.land/x/route_strings/mod.ts";
 ```ts
 import { Route } from "@jmondi/route-strings";
 const r = route("/posts/:slug");
-r.template
+r.template;
 // /posts/:slug
 ```
 
@@ -38,7 +38,7 @@ r.create({ slug: "hello", id: 5 });
 ```ts
 const g = routeGroup({ prefix: "/api/v1" });
 const route = g.add("/posts/:slug/random/:id");
-route.template
+route.template;
 // /api/v1/posts/:slug/random/:id
 route.create({ slug: "hello", id: 5 });
 // /api/v1/posts/hello/random/5
