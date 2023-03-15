@@ -34,4 +34,17 @@ Deno.test("routeGroup#add", async (t) => {
       "https://jasonraimondi.com/posts/hello/random/5",
     );
   });
+
+  await t.step("using localhost with a port", () => {
+    const g = routeGroup({ prefix: "http://localhost:3000" });
+    const route = g.add("/posts/:slug/random/:id");
+    assertEquals(
+      route.template,
+      "http://localhost:3000/posts/:slug/random/:id",
+    );
+    assertEquals(
+      route.create({ slug: "hello", id: 5 }),
+      "http://localhost:3000/posts/hello/random/5",
+    );
+  });
 });

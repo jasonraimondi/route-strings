@@ -32,19 +32,25 @@ export class Route<TPath extends string> {
   }
 
   get template() {
-    const prefix = this.prefix ?? globalPrefix;
-    return prefix ? prefix + this.path : this.path;
+    return this.appendPrefix(this.path);
   }
 
   create(params?: ParseUrlParams<TPath>) {
     if (!params) return this.template;
 
-    const url = Object.entries<string>(params).reduce<string>(
+    let path = Object.entries<string>(params).reduce<string>(
       (path, [key, value]) => path.replace(`:${key}`, value),
-      this.template,
+      this.path,
     );
 
-    return url.replace(/(\(|\)|\/?:[^\/]+)/g, "");
+    path = path.replace(/(\(|\)|\/?:[^\/]+)/g, "");
+
+    return this.appendPrefix(path);
+  }
+
+  private appendPrefix(path: string) {
+    const prefix = this.prefix ?? globalPrefix;
+    return prefix ? prefix + path : path;
   }
 }
 
