@@ -39,16 +39,12 @@ export class Route<TPath extends string> {
   create(params?: ParseUrlParams<TPath>) {
     if (!params) return this.template;
 
-    let url = Object.entries<string>(params).reduce<string>(
+    const url = Object.entries<string>(params).reduce<string>(
       (path, [key, value]) => path.replace(`:${key}`, value),
       this.template,
     );
 
-    url = url.replace(/(\(|\)|\/?:[^\/]+)/g, "");
-
-    const prefix = this.prefix ?? globalPrefix;
-
-    return prefix ? prefix + url : url;
+    return url.replace(/(\(|\)|\/?:[^\/]+)/g, "");
   }
 }
 

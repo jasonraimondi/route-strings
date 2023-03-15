@@ -29,5 +29,9 @@ Deno.test("routeGroup#add", async (t) => {
       route.template,
       "https://jasonraimondi.com/posts/:slug/random/:id",
     );
+    assertEquals(
+      route.create({ slug: "hello", id: 5 }),
+      "https://jasonraimondi.com/posts/hello/random/5",
+    );
   });
 });
